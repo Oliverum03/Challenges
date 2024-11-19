@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add to Bag</title>
+        <link rel="stylesheet" href="answer.css">
+        <meta charset="UTF-8">
+        <meta name="keyword" content="Bag, Buy, Product">
+        <meta name="description" content="The solution for the challenge #2 of https://app.bigdevsoon.me/challenges">
+        <meta name="author" content="Oliver Uria">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    </head>
+
+    <body>
+        <section class="order">
+            <div>
+                <p class="brand upperCase">polo ralph</p>
+                <h1>Custom Fit Polo Bear Oxford Shirt</h1>
+                <p class="desc">Blue polo with a classic cut. Made of smooth and soft cotton.</p>
+            </div>
+            <div>
+                <p class="price">$99.00 <span class="discount">-25%</span></p>
+                <p class="line prevPrice">$132.00</p>
+            </div>
+            <div class="sizing upperCase">
+                <h2 class="title">Choose size</h2>
+                <ul class="sizeList">
+                    <li class="selected" onclick="selectedSize(this)">S</li>
+                    <li onclick="selectedSize(this)">M</li>
+                    <li onclick="selectedSize(this)">L</li>
+                    <li onclick="selectedSize(this)">XL</li>
+                    <li onclick="selectedSize(this)">XXL</li>
+                </ul>
+            </div>
+            <button type="button" class="finish upperCase" onclick="added()">Add to bag</button>
+        </section>
+        <section class="prodImg">
+            <div class="imgList">
+                <img class="thumbnail front active" src="res/front-view 144.jpg" alt="Front View" onclick="changeImage('res/front-view.jpg', this)">
+                <img class="thumbnail side" src="res/side-view 144.jpg" alt="Side View" onclick="changeImage('res/side-view.jpg', this)">
+                <img class="thumbnail rear" src="res/back-view 144.jpg" alt="Rear View" onclick="changeImage('res/back-view.jpg', this)">
+            </div>
+            <img id="mainImg" class="mainImg" src="res/front-view.jpg" alt="Main Product Image">
+        </section>
+
+        <!-- este srcipt lo agregue que el ejercicio quede mejor aunque no se me haya pedido trabajar con JS -->
+        <script>
+            function changeImage(src, element) {
+                document.getElementById('mainImg').src = src;
+                // código generado por ai para mantenr el borde de la imagen seleccionada
+                const thumbnails = document.querySelectorAll('.thumbnail');
+                thumbnails.forEach(thumbnail => {thumbnail.classList.remove('active')});
+                element.classList.add('active');
+            }
+            //funcion para mantener la seleccion de la talla
+            function selectedSize(element) {
+                const items = document.querySelectorAll('li');
+                items.forEach(item => {item.classList.remove('selected')});
+                element.classList.add('selected');
+            }
+
+            function added(){
+                alert("Item added to the bag!");
+            }
+        </script>
+    </body>
+</html>
